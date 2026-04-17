@@ -1,0 +1,31 @@
+services:
+  - name: veriff-bridge
+    type: web
+    runtime: python
+    plan: starter
+    region: oregon
+    buildCommand: pip install -r bland_simulation/requirements.txt
+    startCommand: python bland_simulation/veriff_bridge.py --host 0.0.0.0
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: VERIFF_BASE_URL
+        value: https://stationapi.veriff.com
+      - key: VERIFF_API_KEY
+        sync: false
+      - key: VERIFF_SHARED_SECRET
+        sync: false
+      - key: VERIFF_CALLBACK_URL
+        value: https://www.veriff.com/get-verified?navigation=slim
+      - key: BRIDGE_SHARED_TOKEN
+        generateValue: true
+      - key: BLAND_API_KEY
+        sync: false
+      - key: BLAND_SMS_AGENT_NUMBER
+        sync: false
+      - key: VERIFF_DELIVERY_WEBHOOK_URL
+        sync: false
+      - key: VERIFF_DELIVERY_AUTH_HEADER
+        sync: false
+      - key: VERIFF_DELIVERY_AUTH_VALUE
+        sync: false
