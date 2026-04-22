@@ -524,7 +524,7 @@ class BridgeHandler(BaseHTTPRequestHandler):
             delivery_status,
         )
 
-        if delivery_status == "sent":
+        if delivery_status in {"sent", "sent_via_bland_sms"}:
             speech = "I sent the Veriff verification link. Please complete the verification now and let me know when you're done."
             route_to_agent = False
         else:
