@@ -2,7 +2,7 @@ services:
   - name: veriff-bridge
     type: web
     runtime: python
-    plan: starter
+    plan: free
     region: oregon
     buildCommand: pip install -r bland_simulation/requirements.txt
     startCommand: python bland_simulation/veriff_bridge.py --host 0.0.0.0
